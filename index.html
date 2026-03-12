@@ -66,11 +66,11 @@ label{
 select,input{
     width:100%;
     padding:9px 10px;
-    border:1px solid #ffd2e1;
+    border:1px solid #ddd6fe;
     border-radius:12px;
     box-sizing:border-box;
     font-size:14px;
-    background:#fffafc;
+    background:#F5F2FF;
 }
 
 button{
@@ -100,8 +100,9 @@ button:hover{
 }
 
 .add-btn{
-    background:#c4b5fd;
+    background:#a78bfa;
     color:white;
+    font-weight:bold;
 }
 
 .danger-btn{
@@ -185,9 +186,9 @@ button:hover{
     text-align:center;
     margin-bottom:10px;
     padding:12px;
-    background:#fff8fb;
+    background:#f5f3ff;
     border-radius:18px;
-    border:1px solid #ffe3ee;
+    border:1px solid #ddd6fe;
 }
 
 .trash-can-wrap{
@@ -421,7 +422,7 @@ button:hover{
 }
 
 .chart-wrap{
-    background:#fff9fb;
+    background:#f5f3ff;
     border:1px solid #ddd6fe;
     border-radius:18px;
     padding:14px;
@@ -676,9 +677,9 @@ button:hover{
         </div>
 
         <div class="card">
-            <h2 class="section-title">あんこ種類を追加</h2>
+            <h2 class="section-title">あんこの食べ物を追加</h2>
 
-            <label for="newDrink">新しいあんこ名</label>
+            <label for="newDrink">新しいあんこの食べ物</label>
             <div class="inline-row">
                 <input type="text" id="newDrink" placeholder="例：きんつば">
                 <button class="add-btn" onclick="addDrinkType()">追加する</button>
@@ -696,9 +697,9 @@ button:hover{
                 <div id="fallingItemLayer"></div>
                 <div class="stack-area" id="stackArea"></div>
                 <img src="images/stomach.png" alt="胃袋" class="trash-img" id="trashImg">
+				<div class="trash-message" id="trashMessage"></div>
             </div>
 
-            <div class="trash-message" id="trashMessage">満腹胃袋 0個</div>
             <div class="bottle-count-badge" id="bottleBadge">0 / 20 個</div>
 
             <div class="progress-wrap">
@@ -1215,7 +1216,7 @@ function renderTrashStock(){
         const div = document.createElement("div");
         div.className = "trash-stock-item";
         div.innerHTML = `
-            <<img src="images/stomach.png" alt="満杯胃袋">
+            <img src="images/stomach.png" alt="満杯胃袋">
             <div class="trash-stock-label">${i + 1}個目<br>${oneTrash.length}個</div>
         `;
         div.onclick = function(){
