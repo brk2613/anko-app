@@ -546,7 +546,7 @@ button:hover{
     justify-content:space-between;
     align-items:flex-start;
     gap:10px;
-    background:linear-gradient(90deg,#fff,#fff5f8);
+    background:linear-gradient(90deg,#fff,#f5f3ff);
     border:1px solid #e9d5ff;
     border-radius:14px;
     padding:12px;
@@ -1180,11 +1180,11 @@ function updateStackArea(){
     progressFill.style.width = progress + "%";
 
     if(currentCount >= MAX_PER_TRASH){
-        msg.innerText = "🎉 胃袋満タン！";
+        msg.innerText = "";
         achievementText.innerText = "すごい！ 20個達成！";
         trashImg.style.filter = "brightness(0.9)";
     }else{
-        msg.innerText = "満腹胃袋 " + currentCount + "個";
+        msg.innerText = "";
         trashImg.style.filter = "none";
 
         if(total === 0){
