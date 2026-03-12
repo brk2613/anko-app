@@ -1094,8 +1094,6 @@ function animateItemDrop(record, callback){
     }
 
     const img = document.createElement("img");
-    img.className = "falling-item";
-    img.src = getDrinkImage(record.drink);
     img.alt = record.drink;
 
     const startLeftList = [90, 110, 130, 150];
@@ -1104,24 +1102,38 @@ function animateItemDrop(record, callback){
     img.style.left = startLeft + "px";
     img.style.top = "0px";
 
-    layer.appendChild(img);
+    const startAnimation = function(){
+        img.className = "falling-item";
+        layer.appendChild(img);
 
-    if(trashWrap){
-        setTimeout(function(){
-            trashWrap.classList.remove("shake");
-            void trashWrap.offsetWidth;
-            trashWrap.classList.add("shake");
-        }, 680);
+        if(trashWrap){
+            setTimeout(function(){
+                trashWrap.classList.remove("shake");
+                void trashWrap.offsetWidth;
+                trashWrap.classList.add("shake");
+            }, 680);
+
+            setTimeout(function(){
+                trashWrap.classList.remove("shake");
+            }, 1100);
+        }
 
         setTimeout(function(){
-            trashWrap.classList.remove("shake");
+            img.remove();
+            if(callback) callback();
         }, 1100);
-    }
+    };
 
-    setTimeout(function(){
-        img.remove();
+    img.onload = startAnimation;
+    img.onerror = function(){
         if(callback) callback();
-    }, 1100);
+    };
+
+    img.src = getDrinkImage(record.drink);
+
+    if(img.complete){
+        startAnimation();
+    }
 }
 
 function getCurrentTrashItems(){
